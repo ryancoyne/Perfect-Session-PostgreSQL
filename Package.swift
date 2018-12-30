@@ -1,11 +1,28 @@
-// Generated automatically by Perfect Assistant Application
-// Date: 2017-01-12 20:41:34 +0000
+// swift-tools-version:4.0
+
 import PackageDescription
 let package = Package(
     name: "PerfectSessionPostgreSQL",
-    targets: [],
+    products: [
+        // Products define the executables and libraries produced by a package, and make them visible to other packages.
+        .library(
+            name: "PerfectSessionPostgreSQL",
+            targets: ["PerfectSessionPostgreSQL"]
+        ),
+    ],
     dependencies: [
-        .Package(url: "https://github.com/PerfectlySoft/Perfect-Session.git", majorVersion: 3),
-        .Package(url: "https://github.com/PerfectlySoft/Perfect-PostgreSQL.git", majorVersion: 3),
+        .package(
+            url: "https://github.com/ryancoyne/Perfect-Session.git",
+            from: "4.0.0"),
+        .package(
+            url: "https://github.com/ryancoyne/Perfect-PostgreSQL.git",
+            from: "4.0.0"),
+    ],
+    targets: [
+        .target(
+            name: "PerfectSessionPostgreSQL",
+            dependencies: ["PerfectSession", "PerfectPostgreSQL"],
+            path: "Sources"
+        ),
     ]
 )
